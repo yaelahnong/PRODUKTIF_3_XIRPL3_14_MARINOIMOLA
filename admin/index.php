@@ -1,14 +1,16 @@
 <?php 
   session_start();
   if(!isset($_SESSION["login"])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
+  } else {
+
+    
+    $api_corona = file_get_contents('https://api.kawalcorona.com/indonesia');
+    
+    $data = json_decode($api_corona, true);
+    
+    $data = $data[0];
   }
-
-  $api_corona = file_get_contents('https://api.kawalcorona.com/indonesia');
-
-  $data = json_decode($api_corona, true);
-
-  $data = $data[0];
 
 
 ?>
